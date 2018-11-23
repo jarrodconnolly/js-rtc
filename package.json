@@ -1,0 +1,30 @@
+{
+  "name": "js-rtc",
+  "version": "1.0.0",
+  "description": "JavaScript - Ray Tracer Challenge",
+  "main": "index.js",
+  "author": "Jarrod Connolly",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.12.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarrodconnolly/js-rtc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jarrodconnolly/js-rtc/issues"
+  },
+  "homepage": "https://github.com/jarrodconnolly/js-rtc#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "jest": "^23.6.0"
+  }
+}
