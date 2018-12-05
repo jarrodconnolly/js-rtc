@@ -9,7 +9,8 @@
     "node": ">=10.12.0"
   },
   "scripts": {
-    "test": "jest --collectCoverage"
+    "test": "jest --collectCoverage",
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",

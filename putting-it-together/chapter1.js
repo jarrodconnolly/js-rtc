@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Tuple = require('../lib/tuple');
 
 const projectile = {
