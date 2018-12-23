@@ -10,6 +10,7 @@ module.exports = {
   "extends": "airbnb-base",
   "plugins": ["promise", "node"],
   "rules": {
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "promise/catch-or-return": ["error"],
     "node/no-unsupported-features/es-builtins": ["error"],
     "node/no-unsupported-features/es-syntax": ["error"],

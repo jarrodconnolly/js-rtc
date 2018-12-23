@@ -11,16 +11,12 @@ expect.extend({
     });
     if (pass) {
       return {
-        message: () => (
-          'objects are close enough'
-        ),
         pass: true,
       };
-    } else {
-      return {
-        message: () => (`expected ${expectedValue} to be close to ${otherValue} for [${errorKey}]`),
-        pass: false,
-      };
     }
+    return {
+      message: () => (`expected ${expectedValue} to be close to ${otherValue} for [${errorKey}]`),
+      pass: false,
+    };
   },
 });
