@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/jarrodconnolly/js-rtc#readme",
   "devDependencies": {
-    "eslint": "^5.11.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "jest": "^23.6.0"
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "jest": "^24.7.1"
   }
 }
