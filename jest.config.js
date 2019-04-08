@@ -2,5 +2,5 @@ module.exports = {
   collectCoverage: false,
   testEnvironment: 'node',
   verbose: true,
-  setupTestFrameworkScriptFile: '<rootDir>/jestExpectExtend.js',
+  setupFilesAfterEnv: ['<rootDir>/jestExpectExtend.js'],
 };
