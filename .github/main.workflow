@@ -11,11 +11,11 @@ action "install" {
 action "lint" {
   needs = "install"
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
-  args = "lint"
+  args = "run lint"
 }
 
 action "test" {
   needs = "lint"
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
-  args = "test"
+  args = "run test"
 }
