@@ -6,7 +6,7 @@ expect.extend({
     const pass = Object.keys(other).every((key) => {
       errorKey = key;
       expectedValue = expected[key];
-      otherValue = other[key] ;
+      otherValue = other[key];
       return (Math.abs(other[key] - expected[key]) < (Number.EPSILON));
     });
     if (pass) {
