@@ -4,3 +4,8 @@ node_js:
   - "10"
   - "node"
 cache: npm
+before_script:
+  - npm install -g codecov
+script:
+  - npm run test
+  - codecov

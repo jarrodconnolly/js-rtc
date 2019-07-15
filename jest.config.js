@@ -1,5 +1,6 @@
 module.exports = {
-  collectCoverage: false,
+  collectCoverage: true,
+  coverageDirectory: './coverage/',
   testEnvironment: 'node',
   verbose: true,
   setupFilesAfterEnv: ['<rootDir>/jestExpectExtend.js'],
