@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/jarrodconnolly/js-rtc.svg?branch=master)](https://travis-ci.com/jarrodconnolly/js-rtc)
+[![codecov](https://codecov.io/gh/jarrodconnolly/js-rtc/branch/master/graph/badge.svg)](https://codecov.io/gh/jarrodconnolly/js-rtc)
 
 # JavaScript - Ray Tracer Challenge
 
