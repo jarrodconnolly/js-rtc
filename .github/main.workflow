@@ -1,5 +1,5 @@
 workflow "Lint & Test" {
-  resolves = ["test"]
+  resolves = ["test", "lint"]
   on = "push"
 }
 
@@ -15,7 +15,7 @@ action "lint" {
 }
 
 action "test" {
-  needs = "lint"
+  needs = "install"
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   args = "run test"
 }
