@@ -16,5 +16,6 @@ module.exports = {
     "node/no-unsupported-features/es-syntax": ["error"],
     "node/no-unsupported-features/node-builtins": ["error"],
     "node/no-deprecated-api": ["error"],
+    "object-shorthand": ["error", "consistent-as-needed"]
   },
 };
