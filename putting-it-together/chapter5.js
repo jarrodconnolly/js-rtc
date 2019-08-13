@@ -20,7 +20,11 @@ const canvas = new Canvas(canvasPixels, canvasPixels);
 const red = new Colour(1, 0, 0);
 const sphere = new Sphere();
 
-const start = Date.now();
+// sphere.transform = Transform.scaling(1, 0.5, 1);
+// sphere.transform = Transform.rotationZ(Math.PI / 4).multiply(Transform.scaling(0.5, 1, 1));
+// sphere.transform = Transform.shearing(1, 0, 0, 0, 0, 0).multiply(Transform.scaling(0.5, 1, 1));
+
+const hrstart = process.hrtime();
 for (let y = 0; y < canvasPixels; y++) {
   const worldY = wallHalf - pixelSize * y;
   for (let x = 0; x < canvasPixels; x++) {
@@ -35,7 +39,8 @@ for (let y = 0; y < canvasPixels; y++) {
   }
 }
 
+const hrend = process.hrtime(hrstart);
 console.log(`Rays: ${canvasPixels * canvasPixels}`);
-console.log(`Time: ${Date.now() - start}ms`);
+console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
 
 fs.writeFileSync('chapter5.ppm', canvas.toPPM());
