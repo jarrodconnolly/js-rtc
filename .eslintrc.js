@@ -17,6 +17,7 @@ module.exports = {
     "node/no-unsupported-features/node-builtins": ["error"],
     "node/no-deprecated-api": ["error"],
     "object-shorthand": ["error", "consistent-as-needed"],
-    "no-underscore-dangle": ["off"]
+    "no-underscore-dangle": ["off"],
+    "comma-dangle": ["error", {"functions": "never"}]
   },
 };

@@ -1,12 +1,12 @@
 expect.extend({
-  shallowEpsilonEquals: (expected, other) => {
+  shallowEpsilonEquals: (expected, other, precision) => {
     let expectedValue;
     let otherValue;
     let errorKey;
     const pass = Object.keys(other).every((key) => {
       errorKey = key;
-      expectedValue = expected[key].toFixed(14);
-      otherValue = other[key].toFixed(14);
+      expectedValue = expected[key].toFixed(precision || 14);
+      otherValue = other[key].toFixed(precision || 14);
       return (Math.abs(otherValue - expectedValue) < (Number.EPSILON));
     });
     if (pass) {
