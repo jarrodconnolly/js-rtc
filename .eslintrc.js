@@ -7,6 +7,9 @@ module.exports = {
     "es6": true,
     "jest": true,
   },
+  "globals": {
+    "SharedArrayBuffer" : "readonly",
+  },
   "extends": "airbnb-base",
   "plugins": ["promise", "node"],
   "rules": {
@@ -14,10 +17,12 @@ module.exports = {
     "promise/catch-or-return": ["error"],
     "node/no-unsupported-features/es-builtins": ["error"],
     "node/no-unsupported-features/es-syntax": ["error"],
-    "node/no-unsupported-features/node-builtins": ["error"],
+    "node/no-unsupported-features/node-builtins": ["error", {
+      ignores: ["worker_threads"],
+    }],
     "node/no-deprecated-api": ["error"],
     "object-shorthand": ["error", "consistent-as-needed"],
     "no-underscore-dangle": ["off"],
-    "comma-dangle": ["error", {"functions": "never"}]
+    "max-len": ["error", 120],
   },
 };

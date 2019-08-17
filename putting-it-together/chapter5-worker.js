@@ -1,20 +1,22 @@
-/* eslint-disable no-console */
-const {parentPort, workerData} = require('worker_threads');
-const fs = require('fs');
+const {
+  parentPort,
+  workerData,
+// eslint-disable-next-line import/no-unresolved
+} = require('worker_threads');
 const Tuple = require('../lib/tuple');
-const Canvas = require('../lib/canvas');
-const Colour = require('../lib/colour');
 const Sphere = require('../lib/sphere');
 const Ray = require('../lib/ray');
 const Intersect = require('../lib/intersect');
 
-const workerIndex = workerData.workerIndex;
-const workerCount = workerData.workerCount;
-const data = workerData.data;
-const canvasPixels = workerData.canvasPixels;
-const start = workerData.start;
-const end = workerData.end;
+const {
+  start,
+  end,
+  canvasPixels,
+  data,
+  workerIndex,
+} = workerData;
 
+// eslint-disable-next-line no-console
 console.log(`Worker: ${workerIndex} - ${start} : ${end}`);
 
 const wallZ = 10;

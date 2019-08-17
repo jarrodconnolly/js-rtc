@@ -1,13 +1,25 @@
-const fs = require('fs');
+// eslint-disable-next-line import/no-unresolved
 const { Worker } = require('worker_threads');
-const Canvas = require('../lib/canvas');
 
 const workerCount = 4;
 const canvasPixels = 1024;
 let completedWorkers = 0;
 
+let hrstart;
+
 const sharedBuffer = new SharedArrayBuffer(Float32Array.BYTES_PER_ELEMENT * canvasPixels * canvasPixels);
 const arr = new Float32Array(sharedBuffer);
+
+function workerMessageCallback(message) {
+  // eslint-disable-next-line no-console
+  console.log(`Worker ${message.workerIndex} ${message.time}`);
+  completedWorkers += 1;
+  if (completedWorkers === workerCount) {
+    const hrend = process.hrtime(hrstart);
+    // eslint-disable-next-line no-console
+    console.log(`Total Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
+  }
+}
 
 const workers = [];
 for (let i = 0; i < workerCount; i++) {
@@ -21,18 +33,12 @@ for (let i = 0; i < workerCount; i++) {
       data: arr,
     },
   });
-  worker.on('message', (message) => {
-    console.log(`Worker ${message.workerIndex} ${message.time}`);
-    completedWorkers++;
-    if (completedWorkers === workerCount) {
-      const hrend = process.hrtime(hrstart);
-      console.log(`Total Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
-    }
-  });
+
+  worker.on('message', workerMessageCallback);
   workers.push(worker);
 }
 
-const hrstart = process.hrtime();
+hrstart = process.hrtime();
 
 for (let j = 0; j < workerCount; j++) {
   workers[j].postMessage('');

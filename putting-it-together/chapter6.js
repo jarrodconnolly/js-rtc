@@ -6,7 +6,6 @@ const Colour = require('../lib/colour');
 const Sphere = require('../lib/sphere');
 const Ray = require('../lib/ray');
 const Intersect = require('../lib/intersect');
-const Materials = require('../lib/materials');
 const PointLight = require('../lib/lights');
 // const Transform = require('../lib/transform');
 
@@ -19,7 +18,6 @@ const pixelSize = wallSize / canvasPixels;
 const rayOrigin = Tuple.point(0, 0, -5);
 
 const canvas = new Canvas(canvasPixels, canvasPixels);
-const red = new Colour(1, 0, 0);
 const sphere = new Sphere();
 sphere.material.colour = new Colour(1, 0.2, 0.5);
 
