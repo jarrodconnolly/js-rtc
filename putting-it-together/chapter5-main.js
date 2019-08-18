@@ -28,8 +28,8 @@ for (let i = 0; i < workerCount; i++) {
       workerIndex: i,
       workerCount: workerCount,
       canvasPixels: canvasPixels,
-      start: (canvasPixels * canvasPixels) / workerCount * i,
-      end: (canvasPixels * canvasPixels) / workerCount * (i + 1) - 1,
+      start: ((canvasPixels * canvasPixels) / workerCount) * i,
+      end: ((canvasPixels * canvasPixels) / workerCount) * (i + 1) - 1,
       data: arr,
     },
   });
