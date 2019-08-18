@@ -6,7 +6,7 @@ const Colour = require('../lib/colour');
 
 const projectile = {
   position: Tuple.point(0, 1, 0),
-  velocity: Tuple.vector(1, 1.8, 0).normalize().multiply(11.25),
+  velocity: Tuple.vector(0.5, 1.3, 0).normalize().multiply(10),
 };
 
 const environment = {
@@ -14,7 +14,7 @@ const environment = {
   wind: Tuple.vector(-0.01, 0, 0),
 };
 
-const canvas = new Canvas(900, 550);
+const canvas = new Canvas(512, 512);
 
 const tick = () => {
   projectile.position = projectile.position
@@ -29,6 +29,11 @@ const tick = () => {
     const y = Math.round(projectile.position.y);
     console.log(`x:${x} y:${y}`);
     canvas.writePixel(x, canvas.height - y, new Colour(1, 0, 0));
+    canvas.writePixel(x, canvas.height - y + 1, new Colour(1, 0, 0));
+    canvas.writePixel(x, canvas.height - y - 1, new Colour(1, 0, 0));
+    canvas.writePixel(x + 1, canvas.height - y, new Colour(1, 0, 0));
+    canvas.writePixel(x - 1, canvas.height - y, new Colour(1, 0, 0));
+
     setTimeout(tick, 5);
   } else {
     console.log('done.');

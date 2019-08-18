@@ -5,13 +5,13 @@ const Canvas = require('../lib/canvas');
 const Colour = require('../lib/colour');
 const Transform = require('../lib/transform');
 
-const canvas = new Canvas(1000, 1000);
+const canvas = new Canvas(512, 512);
 const white = new Colour(1, 1, 1);
 
 const offsetX = canvas.width / 2;
 const offsetY = canvas.height / 2;
 
-const radius = canvas.width / 4;
+const radius = canvas.width / 3;
 const twelve = Tuple.point(0, -1, 0);
 
 for (let h = 1; h <= 12; h++) {
@@ -21,6 +21,10 @@ for (let h = 1; h <= 12; h++) {
   const y = Math.round((p.y * radius) + offsetY);
 
   canvas.writePixel(x, y, white);
+  canvas.writePixel(x, y + 1, white);
+  canvas.writePixel(x, y - 1, white);
+  canvas.writePixel(x + 1, y, white);
+  canvas.writePixel(x - 1, y, white);
 }
 
 fs.writeFileSync('chapter4.ppm', canvas.toPPM());
