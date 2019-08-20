@@ -3,10 +3,11 @@ expect.extend({
     let expectedValue;
     let otherValue;
     let errorKey;
+    const comparisionPrecision = (precision !== undefined) ? precision : 14;
     const pass = Object.keys(other).every((key) => {
       errorKey = key;
-      expectedValue = expected[key].toFixed(precision || 14);
-      otherValue = other[key].toFixed(precision || 14);
+      expectedValue = expected[key].toFixed(comparisionPrecision);
+      otherValue = other[key].toFixed(comparisionPrecision);
       return (Math.abs(otherValue - expectedValue) < (Number.EPSILON));
     });
     if (pass) {
