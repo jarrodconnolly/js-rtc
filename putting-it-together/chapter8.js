@@ -47,7 +47,6 @@ left.material.specular = 0.3;
 
 const light = new PointLight(Tuple.point(-10, 10, -10), new Colour(1, 1, 1));
 const world = new World(light, [floor, leftWall, rightWall, left, middle, right]);
-world.shadowEnabled = false;
 
 const camera = new Camera(512, 512, Math.PI / 3);
 const from = Tuple.point(0, 1.5, -5);
@@ -60,4 +59,4 @@ const canvas = camera.render(world);
 const hrend = process.hrtime(hrstart);
 console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
 
-fs.writeFileSync('chapter7.ppm', canvas.toPPM());
+fs.writeFileSync('chapter8.ppm', canvas.toPPM());
