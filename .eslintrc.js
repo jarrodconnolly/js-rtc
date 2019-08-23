@@ -24,5 +24,6 @@ module.exports = {
     "object-shorthand": ["error", "consistent-as-needed"],
     "no-underscore-dangle": ["off"],
     "max-len": ["error", 120],
+    "no-useless-constructor": ["off"],
   },
 };
