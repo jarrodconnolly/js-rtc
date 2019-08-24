@@ -9,6 +9,7 @@ const Tuple = require('../lib/tuple');
 const Camera = require('../lib/camera');
 const Plane = require('../lib/shapes/plane');
 const Stripe = require('../lib/patterns/stripe');
+const Gradient = require('../lib/patterns/gradient');
 
 const floor = new Plane();
 floor.material.colour = new Colour(0.6, 0.6, 0.6);
@@ -28,7 +29,8 @@ middle.material.specular = 0.75;
 
 const right = new Sphere();
 right.transform = Transform.translation(1.5, 0.5, -0.5).multiply(Transform.scaling(0.5, 0.5, 0.5));
-right.material.colour = new Colour(0.5, 1, 0.1);
+right.material.pattern = new Gradient(new Colour(1, 0, 0), new Colour(0, 1, 0));
+right.material.pattern.transform = Transform.scaling(2, 1, 1).multiply(Transform.translation(-0.5, 0, 0));
 right.material.diffuse = 0.7;
 right.material.specular = 0.3;
 
