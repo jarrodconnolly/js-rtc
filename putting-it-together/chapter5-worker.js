@@ -4,7 +4,7 @@ const {
 // eslint-disable-next-line import/no-unresolved
 } = require('worker_threads');
 const Tuple = require('../lib/tuple');
-const Sphere = require('../lib/sphere');
+const Sphere = require('../lib/shapes/sphere');
 const Ray = require('../lib/ray');
 const Intersect = require('../lib/intersect');
 

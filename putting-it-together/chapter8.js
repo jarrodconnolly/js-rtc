@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const fs = require('fs');
-const Sphere = require('../lib/sphere');
+const Sphere = require('../lib/shapes/sphere');
 const Colour = require('../lib/colour');
 const Transform = require('../lib/transform');
 const World = require('../lib/world');

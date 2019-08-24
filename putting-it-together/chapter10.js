@@ -8,6 +8,7 @@ const PointLight = require('../lib/lights');
 const Tuple = require('../lib/tuple');
 const Camera = require('../lib/camera');
 const Plane = require('../lib/shapes/plane');
+const Stripe = require('../lib/patterns/stripe');
 
 const floor = new Plane();
 floor.material.colour = new Colour(0.6, 0.6, 0.6);
@@ -20,9 +21,10 @@ wall.material.specular = 0;
 
 const middle = new Sphere();
 middle.transform = Transform.translation(-0.5, 1, 0.5);
-middle.material.colour = new Colour(0.1, 1, 0.5);
-middle.material.diffuse = 0.7;
-middle.material.specular = 0.3;
+middle.material.pattern = new Stripe(Colour.white(), Colour.black());
+middle.material.pattern.transform = Transform.scaling(0.125, 1, 1);
+middle.material.diffuse = 0.9;
+middle.material.specular = 0.75;
 
 const right = new Sphere();
 right.transform = Transform.translation(1.5, 0.5, -0.5).multiply(Transform.scaling(0.5, 0.5, 0.5));
@@ -50,4 +52,4 @@ const canvas = camera.render(world);
 const hrend = process.hrtime(hrstart);
 console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
 
-fs.writeFileSync('chapter9.ppm', canvas.toPPM());
+fs.writeFileSync('chapter10.ppm', canvas.toPPM());
