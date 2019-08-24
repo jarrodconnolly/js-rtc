@@ -10,9 +10,12 @@ const Camera = require('../lib/camera');
 const Plane = require('../lib/shapes/plane');
 const Stripe = require('../lib/patterns/stripe');
 const Gradient = require('../lib/patterns/gradient');
+const Ring = require('../lib/patterns/ring');
+const Checker = require('../lib/patterns/checker');
 
 const floor = new Plane();
-floor.material.colour = new Colour(0.6, 0.6, 0.6);
+floor.material.pattern = new Ring(Colour.white(), Colour.black());
+floor.material.pattern.transform = Transform.scaling(0.25, 1, 0.25);
 floor.material.specular = 0;
 
 const wall = new Plane();
@@ -35,10 +38,11 @@ right.material.diffuse = 0.7;
 right.material.specular = 0.3;
 
 const left = new Sphere();
-left.transform = Transform.translation(-1.5, 0.33, -0.75).multiply(Transform.scaling(0.33, 0.33, 0.33));
-left.material.colour = new Colour(1, 0.8, 0.1);
-left.material.diffuse = 0.7;
-left.material.specular = 0.3;
+left.transform = Transform.translation(-1.5, 0.25, -0.75).multiply(Transform.scaling(0.75, 0.75, 0.75));
+left.material.pattern = new Checker(new Colour(1, 0, 0), new Colour(0, 1, 0));
+left.material.pattern.transform = Transform.scaling(0.25, 0.25, 0.25);
+left.material.diffuse = 0.9;
+left.material.specular = 0.1;
 
 const light = new PointLight(Tuple.point(-10, 10, -10), new Colour(1, 1, 1));
 const world = new World(light, [floor, wall, left, middle, right]);
