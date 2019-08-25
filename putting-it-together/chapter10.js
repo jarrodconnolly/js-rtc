@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const fs = require('fs');
 const Sphere = require('../lib/shapes/sphere');
 const Colour = require('../lib/colour');
 const Transform = require('../lib/transform');
@@ -12,6 +11,7 @@ const Stripe = require('../lib/patterns/stripe');
 const Gradient = require('../lib/patterns/gradient');
 const Ring = require('../lib/patterns/ring');
 const Checker = require('../lib/patterns/checker');
+const Perturb = require('../lib/patterns/perturb');
 
 const floor = new Plane();
 floor.material.pattern = new Ring(Colour.white(), Colour.black());
@@ -59,8 +59,16 @@ left.material.pattern.transform = Transform.scaling(0.25, 0.25, 0.25);
 left.material.diffuse = 0.9;
 left.material.specular = 0.1;
 
+const closer = new Sphere();
+closer.transform = Transform.translation(0.25, 0.5, -2).multiply(Transform.scaling(0.5, 0.5, 0.5));
+const closerChecker = new Checker(new Colour(0, 0, 1), new Colour(0, 1, 0.5), true);
+closerChecker.transform = Transform.scaling(0.25, 0.25, 0.25);
+closer.material.pattern = new Perturb(closerChecker, 0.5);
+closer.material.diffuse = 0.9;
+closer.material.specular = 0.1;
+
 const light = new PointLight(Tuple.point(-10, 10, -10), new Colour(1, 1, 1));
-const world = new World(light, [floor, wall, left, middle, right, right2, right3]);
+const world = new World(light, [floor, wall, closer, left, middle, right, right2, right3]);
 
 const camera = new Camera(512, 512, Math.PI / 3);
 const from = Tuple.point(0, 1.5, -5);
@@ -73,4 +81,4 @@ const canvas = camera.render(world);
 const hrend = process.hrtime(hrstart);
 console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
 
-fs.writeFileSync('chapter10.ppm', canvas.toPPM());
+canvas.toPPMBinary('chapter10.ppm');
