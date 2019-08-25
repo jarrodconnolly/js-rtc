@@ -20,7 +20,8 @@ floor.material.specular = 0;
 
 const wall = new Plane();
 wall.transform = Transform.translation(0, 0, 2).multiply(Transform.rotationX(Math.PI / 2));
-wall.material.colour = new Colour(0.15, 0.15, 0.75);
+wall.material.pattern = new Gradient(new Colour(0.2, 0.2, 1), new Colour(0, 0, 0));
+wall.material.pattern.transform = Transform.scaling(1, 1, 5).multiply(Transform.rotationY(Math.PI / 2));
 wall.material.specular = 0;
 
 const middle = new Sphere();
@@ -37,15 +38,29 @@ right.material.pattern.transform = Transform.scaling(2, 1, 1).multiply(Transform
 right.material.diffuse = 0.7;
 right.material.specular = 0.3;
 
+const right2 = new Sphere();
+right2.transform = Transform.translation(1.5, 1.0, -0.5).multiply(Transform.scaling(0.5, 0.5, 0.5));
+right2.material.pattern = new Gradient(new Colour(1, 0, 0), new Colour(0, 1, 0));
+right2.material.pattern.transform = Transform.scaling(2, 1, 1).multiply(Transform.translation(-0.5, 0, 0));
+right2.material.diffuse = 0.7;
+right2.material.specular = 0.3;
+
+const right3 = new Sphere();
+right3.transform = Transform.translation(1.5, 1.5, -0.5).multiply(Transform.scaling(0.5, 0.5, 0.5));
+right3.material.pattern = new Gradient(new Colour(1, 0, 0), new Colour(0, 1, 0));
+right3.material.pattern.transform = Transform.scaling(2, 1, 1).multiply(Transform.translation(-0.5, 0, 0));
+right3.material.diffuse = 0.7;
+right3.material.specular = 0.3;
+
 const left = new Sphere();
 left.transform = Transform.translation(-1.5, 0.25, -0.75).multiply(Transform.scaling(0.75, 0.75, 0.75));
-left.material.pattern = new Checker(new Colour(1, 0, 0), new Colour(0, 1, 0));
+left.material.pattern = new Checker(new Colour(1, 0, 0), new Colour(0, 1, 0), true);
 left.material.pattern.transform = Transform.scaling(0.25, 0.25, 0.25);
 left.material.diffuse = 0.9;
 left.material.specular = 0.1;
 
 const light = new PointLight(Tuple.point(-10, 10, -10), new Colour(1, 1, 1));
-const world = new World(light, [floor, wall, left, middle, right]);
+const world = new World(light, [floor, wall, left, middle, right, right2, right3]);
 
 const camera = new Camera(512, 512, Math.PI / 3);
 const from = Tuple.point(0, 1.5, -5);
