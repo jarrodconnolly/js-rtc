@@ -38,3 +38,7 @@ https://pragprog.com/book/jbtracer/the-ray-tracer-challenge
 
 ## Chapter 9
 ![chapter 9](https://i.imgur.com/YXvkVuS.jpg)
+
+
+## Chapter 10
+![chapter 10](https://i.imgur.com/NXE5ImL.jpg)
