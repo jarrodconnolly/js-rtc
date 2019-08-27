@@ -25,5 +25,12 @@ module.exports = {
     "no-underscore-dangle": ["off"],
     "max-len": ["error", 120],
     "no-useless-constructor": ["off"],
+    "comma-dangle": ["error", {
+      arrays: "always-multiline",
+      objects: "always-multiline",
+      imports: "always-multiline",
+      exports: "always-multiline",
+      functions: "never",
+    }],
   },
 };
