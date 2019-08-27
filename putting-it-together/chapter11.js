@@ -16,6 +16,7 @@ const floor = new Plane();
 floor.material.pattern = new Ring(Colour.white(), Colour.black());
 floor.material.pattern.transform = Transform.scaling(0.25, 1, 0.25);
 floor.material.specular = 0;
+floor.material.reflective = 0.75;
 
 const wall = new Plane();
 wall.transform = Transform.translation(0, 0, 2).multiply(Transform.rotationX(Math.PI / 2));
@@ -69,7 +70,7 @@ closer.material.specular = 0.1;
 const light = new PointLight(Tuple.point(-10, 10, -10), new Colour(1, 1, 1));
 const world = new World(light, [floor, wall, closer, left, middle, right, right2, right3]);
 
-const camera = new Camera(2048, 2048, Math.PI / 3);
+const camera = new Camera(512, 512, Math.PI / 3);
 const from = Tuple.point(0, 1.5, -5);
 const to = Tuple.point(0, 1, 0);
 const up = Tuple.vector(0, 1, 0);
