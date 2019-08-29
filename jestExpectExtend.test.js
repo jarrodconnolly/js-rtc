@@ -16,7 +16,7 @@ describe('jest expect shallowEpsilonEquals', () => {
       a: 0.1 + 0.2,
     };
     const o2 = {
-      a: 0.3000000001,
+      a: 0.300001,
     };
     expect(o1).not.shallowEpsilonEquals(o2);
   });

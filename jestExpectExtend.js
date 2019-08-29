@@ -1,3 +1,5 @@
+const Helpers = require('./lib/helpers');
+
 expect.extend({
   shallowEpsilonEquals: (expected, other, precision) => {
     let expectedValue;
@@ -8,7 +10,7 @@ expect.extend({
       errorKey = key;
       expectedValue = expected[key].toFixed(comparisionPrecision);
       otherValue = other[key].toFixed(comparisionPrecision);
-      return (Math.abs(otherValue - expectedValue) < (Number.EPSILON));
+      return (Math.abs(otherValue - expectedValue) < (Helpers.EPSILON));
     });
     if (pass) {
       return {
@@ -30,7 +32,7 @@ expect.extend({
       errorKey = i;
       expectedValue = expected.data[i].toFixed(precision || 14);
       otherValue = other.data[i].toFixed(precision || 14);
-      return (Math.abs(otherValue - expectedValue)) < Number.EPSILON;
+      return (Math.abs(otherValue - expectedValue)) < Helpers.EPSILON;
     });
     if (pass) {
       return {
