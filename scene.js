@@ -122,6 +122,7 @@ class Scene {
     if (o.material.color) {
       shape.material.colour = new Colour(o.material.color[0], o.material.color[1], o.material.color[2]);
     }
+    Scene.setValueExists(shape, o, 'id', 'ID');
     Scene.setValueExists(shape.material, o.material, 'ambient');
     Scene.setValueExists(shape.material, o.material, 'diffuse');
     Scene.setValueExists(shape.material, o.material, 'specular');
@@ -164,6 +165,10 @@ class Scene {
     console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
     const outputFile = `${path.basename(this.filename, '.yaml')}.ppm`;
     canvas.toPPMBinary(outputFile);
+  }
+
+  renderPixel(x, y) {
+    this.camera.renderPixel(this.world, x, y);
   }
 }
 
