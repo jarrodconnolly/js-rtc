@@ -1,6 +1,8 @@
 const Scene = require('../scene');
 
+const sceneFile = process.argv[2];
 const scene = new Scene();
-scene.load('scenes/jamis-ch11-schlick.yaml');
-// scene.render();
+scene.load(sceneFile);
+//scene.render();
+
 scene.renderPixel(125, 125);
