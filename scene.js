@@ -101,7 +101,7 @@ class Scene {
   static setTransform(shape, o) {
     if (o.transform) {
       let finalTransform = Matrix.getIdentity();
-      o.transform.forEach((t) => {
+      o.transform.reverse().forEach((t) => {
         switch (t[0]) {
           case 'scale': {
             console.log('  scale');

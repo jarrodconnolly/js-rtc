@@ -14,8 +14,8 @@
 - add: plane
   id: WALL
   transform:
-    - [ translate, 0, 0, 10 ]
     - [ rotate-x, 1.5708 ]
+    - [ translate, 0, 0, 10 ]
   material:
     pattern:
       type: checkers
