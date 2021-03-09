@@ -12,6 +12,7 @@ const Sphere = require('./lib/shapes/sphere');
 const Matrix = require('./lib/matrix');
 const Plane = require('./lib/shapes/plane');
 const Checker = require('./lib/patterns/checker');
+const Stripes = require('./lib/patterns/stripe');
 
 class Scene {
   constructor() {
@@ -79,6 +80,17 @@ class Scene {
           shape.material.pattern = checker;
           break;
         }
+        case 'stripes': {
+          const c1 = new Colour(o.material.pattern.colors[0][0],
+            o.material.pattern.colors[0][1],
+            o.material.pattern.colors[0][2]);
+          const c2 = new Colour(o.material.pattern.colors[1][0],
+            o.material.pattern.colors[1][1],
+            o.material.pattern.colors[1][2]);
+          const stripes = new Stripes(c1, c2);
+          shape.material.pattern = stripes;
+          break;
+        }
         default: {
           throw new Error(`unknown pattern type: ${o.material.pattern.type}`);
         }
@@ -89,7 +101,7 @@ class Scene {
   static setTransform(shape, o) {
     if (o.transform) {
       let finalTransform = Matrix.getIdentity();
-      o.transform.forEach((t) => {
+      o.transform.reverse().forEach((t) => {
         switch (t[0]) {
           case 'scale': {
             console.log('  scale');
@@ -109,6 +121,18 @@ class Scene {
             finalTransform = finalTransform.multiply(rx);
             break;
           }
+          case 'rotate-y': {
+            console.log('  rotate-y');
+            const ry = Transform.rotationY(t[1]);
+            finalTransform = finalTransform.multiply(ry);
+            break;
+          }
+          case 'rotate-z': {
+            console.log('  rotate-z');
+            const rz = Transform.rotationZ(t[1]);
+            finalTransform = finalTransform.multiply(rz);
+            break;
+          }
           default: {
             throw new Error(`Unknown transform type: ${t}`);
           }
@@ -122,6 +146,7 @@ class Scene {
     if (o.material.color) {
       shape.material.colour = new Colour(o.material.color[0], o.material.color[1], o.material.color[2]);
     }
+    Scene.setValueExists(shape, o, 'id', 'ID');
     Scene.setValueExists(shape.material, o.material, 'ambient');
     Scene.setValueExists(shape.material, o.material, 'diffuse');
     Scene.setValueExists(shape.material, o.material, 'specular');
@@ -164,6 +189,10 @@ class Scene {
     console.log(`Time ${hrend[0]}s ${hrend[1] / 1000000}ms`);
     const outputFile = `${path.basename(this.filename, '.yaml')}.ppm`;
     canvas.toPPMBinary(outputFile);
+  }
+
+  renderPixel(x, y) {
+    this.camera.renderPixel(this.world, x, y);
   }
 }
 

@@ -12,6 +12,7 @@
 
 # wall
 - add: plane
+  id: WALL
   transform:
     - [ rotate-x, 1.5708 ]
     - [ translate, 0, 0, 10 ]
@@ -27,6 +28,7 @@
 
 # glass ball
 - add: sphere
+  id: BIG-SPHERE
   material:
     color: [ 1, 1, 1 ]
     ambient: 0
@@ -39,6 +41,7 @@
 
 # hollow center
 - add: sphere
+  id: SMALL-SPHERE
   transform:
     - [ scale, 0.5, 0.5, 0.5 ]
   material:
