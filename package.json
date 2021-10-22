@@ -10,7 +10,9 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"**/*.js\"",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
     "jest": "24.9.0"
   },
   "dependencies": {
-    "js-yaml": "3.13.1"
-  }
+    "js-yaml": "3.13.1",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
